@@ -2,7 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0f172a;
+  background: #292a0f;
   color: white;
 }
 
@@ -34,4 +34,12 @@
 
 .save-btn:hover {
   background: #16a34a;
+}
+
+.stats {
+  padding: 10px;
+  background: #1e293b;
+  color: #facc15;
+  font-size: 14px;
+  text-align: center;
 }

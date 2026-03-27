@@ -5,6 +5,8 @@ export const useKeystrokeLogger = () => {
   const keystrokes = useRef<KeystrokeEvent[]>([]);
   const startTime = useRef<number>(Date.now());
 
+  const pastedChars = useRef<number>(0);
+
   const logKeyDown = (key: string) => {
     keystrokes.current.push({
       key,
@@ -21,9 +23,14 @@ export const useKeystrokeLogger = () => {
     });
   };
 
+  const logPaste = (text: string) => {
+    pastedChars.current += text.length;
+  };
+
   const getSessionData = () => {
     return {
       keystrokes: keystrokes.current,
+      pastedChars: pastedChars.current,
       startTime: startTime.current,
       endTime: Date.now(),
     };
@@ -32,6 +39,8 @@ export const useKeystrokeLogger = () => {
   return {
     logKeyDown,
     logKeyUp,
+    logPaste,
     getSessionData,
+    pastedChars,
   };
 };
