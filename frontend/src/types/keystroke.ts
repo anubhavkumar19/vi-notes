@@ -1,12 +1,11 @@
 export interface KeystrokeEvent {
-  key: string;
   timestamp: number;
   type: "keydown" | "keyup";
 }
 
-export interface WritingSession {
+export interface SessionData {
   content: string;
   keystrokes: KeystrokeEvent[];
-  startTime: number;
-  endTime?: number;
+  pastedChars: number;
+  pastePercentage: number;
 }

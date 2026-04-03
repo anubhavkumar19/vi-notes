@@ -3,21 +3,37 @@ import type { KeystrokeEvent } from "../../types/keystroke";
 
 export const useKeystrokeLogger = () => {
   const keystrokes = useRef<KeystrokeEvent[]>([]);
-  const startTime = useRef<number>(Date.now());
-
   const pastedChars = useRef<number>(0);
+  const backspaceCount = useRef<number>(0);
+
+  const lastTime = useRef<number>(Date.now());
+  const totalPauseTime = useRef<number>(0);
+  const pauseCount = useRef<number>(0);
 
   const logKeyDown = (key: string) => {
+    const now = Date.now();
+    const diff = now - lastTime.current;
+
+    // Detect pauses (>500ms)
+    if (diff > 500) {
+      totalPauseTime.current += diff;
+      pauseCount.current++;
+    }
+
+    if (key === "Backspace") {
+      backspaceCount.current++;
+    }
+
     keystrokes.current.push({
-      key,
-      timestamp: Date.now(),
+      timestamp: diff,
       type: "keydown",
     });
+
+    lastTime.current = now;
   };
 
-  const logKeyUp = (key: string) => {
+  const logKeyUp = (_key: string) => {
     keystrokes.current.push({
-      key,
       timestamp: Date.now(),
       type: "keyup",
     });
@@ -27,20 +43,14 @@ export const useKeystrokeLogger = () => {
     pastedChars.current += text.length;
   };
 
-  const getSessionData = () => {
-    return {
-      keystrokes: keystrokes.current,
-      pastedChars: pastedChars.current,
-      startTime: startTime.current,
-      endTime: Date.now(),
-    };
-  };
-
   return {
+    keystrokes,
+    pastedChars,
+    backspaceCount,
+    totalPauseTime,
+    pauseCount,
     logKeyDown,
     logKeyUp,
     logPaste,
-    getSessionData,
-    pastedChars,
   };
 };

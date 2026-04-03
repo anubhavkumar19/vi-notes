@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",          // matched with moduleResolution
+    "moduleResolution": "NodeNext",  // avoid deprecated node10 alias
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true
+  }
+}

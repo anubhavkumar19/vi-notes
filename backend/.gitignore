@@ -1,0 +1,109 @@
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Dependency directories
+# =========================
+node_modules/
+
+# =========================
+# Build outputs
+# =========================
+dist/
+build/
+out/
+.next/
+coverage/
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
+
+# =========================
+# Environment variables
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Cache
+# =========================
+.cache/
+.parcel-cache/
+.eslintcache
+
+# =========================
+# IDEs & Editors
+# =========================
+
+## VS Code
+.vscode/
+
+## JetBrains
+.idea/
+*.iml
+
+# =========================
+# React / Frontend
+# =========================
+# Vite
+vite.svg
+
+# CRA
+build/
+
+# =========================
+# Backend (Node/Express)
+# =========================
+uploads/
+tmp/
+temp/
+
+# =========================
+# Database
+# =========================
+*.sqlite
+*.db
+
+# =========================
+# Testing
+# =========================
+jest-cache/
+coverage/
+
+# =========================
+# Docker
+# =========================
+.dockerignore
+Dockerfile*
+docker-compose*.yml
+
+# =========================
+# Misc
+# =========================
+*.tgz
+*.gz
+*.zip
+
+# =========================
+# Secrets & Keys
+# =========================
+*.pem
+*.key
+*.crt
